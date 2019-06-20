@@ -15,7 +15,7 @@ public class CreatureTest {
 
     @Before
     public void before() {
-        nigel = new NigelFarage("Nigel", 50){
+        nigel = new NigelFarage("Nigel", 50, 10 ){
         };
     }
 
@@ -36,6 +36,6 @@ public class CreatureTest {
     public void getHealthAfterAttack(){
         warrior = new Warrior("Bob", 100, Weapons.AXE, Armour.STEELARMOUR);
         warrior.attack(nigel);
-        assertEquals(40, nigel.getHp());
+        assertEquals(30, nigel.getHp());
     }
 }

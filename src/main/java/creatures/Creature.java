@@ -5,22 +5,15 @@ import player.Player;
 
 public abstract class Creature extends Player implements IAttack {
 
-    private String name;
-    protected int hp;
+    private int attack;
 
-    public Creature(String name, int hp){
+    public Creature(String name, int hp, int attack){
         super(name, hp);
+        this.attack = attack;
     }
 
 
-    public String getName() {
-        return name;
+    public int getAttack() {
+        return attack;
     }
-
-    public int getHp() {
-        return hp;
-    }
-
-
-
 }

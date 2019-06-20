@@ -16,7 +16,7 @@ public class RoomTest {
 
     @Before
     public void before(){
-        nigel = new NigelFarage("Nigel", 50);
+        nigel = new NigelFarage("Nigel", 50, 10 );
         dungeon = new Dungeon("The evil dungeon", Treasure.APPLESHARES, nigel );
     }
 

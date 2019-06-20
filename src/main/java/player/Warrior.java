@@ -29,7 +29,9 @@ public class Warrior extends Player implements IAttack {
         player.takeDamage(attackDamage);
     }
 
-    public void takeDamage(int damage) {
-        this.hp -= damage;
+    public void takeDamage(int  damage) {
+        this.hp -= damage - (damage / this.armour.getValue());
     }
+
+
 }
