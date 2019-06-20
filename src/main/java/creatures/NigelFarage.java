@@ -1,12 +1,13 @@
 package creatures;
 
+import Room.Room;
 import player.Player;
 
 public class NigelFarage extends Creature {
 
 
-    public NigelFarage(String name, int hp, int attack) {
-        super(name, hp, attack);
+    public NigelFarage(String name, int hp, Room room, int attack) {
+        super(name, hp, room,  attack);
     }
 
     public void takeDamage(int damage){

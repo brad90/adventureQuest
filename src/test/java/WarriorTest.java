@@ -1,3 +1,4 @@
+import Room.Dungeon;
 import creatures.NigelFarage;
 import equipment.Armour;
 import equipment.Treasure;
@@ -17,10 +18,12 @@ public class WarriorTest {
     Weapons weapon;
     Treasure treasure;
     NigelFarage nigel;
+    Dungeon dungeon;
 
     @Before
     public void before(){
-        warrior = new Warrior("Rory Stewart", 100, Weapons.SWORD, Armour.MEATSHEILD);
+        warrior = new Warrior("Rory Stewart", 100, dungeon, Weapons.SWORD, Armour.MEATSHEILD);
+        dungeon = new Dungeon("Dungeon", Treasure.APPLESHARES, nigel, warrior);
     }
 
 
@@ -53,21 +56,21 @@ public class WarriorTest {
 
     @Test
     public void getValueOfSatchelAfterPickingUpStuff(){
-        warrior.addTreasureToSatchel(Treasure.APPLESHARES);
+        warrior.addTreasureToSatchel(dungeon);
         assertEquals(200,warrior.getSatchel());
     }
 
     @Test
     public void getHealthAfterAttack(){
-        nigel = new NigelFarage("Bob", 100, 10);
+        nigel = new NigelFarage("Bob", 100, dungeon,10);
         nigel.attack(warrior);
         assertEquals(92, warrior.getHp());
     }
 
     @Test
     public void getHealthAfterAttackSteelArmour(){
-        warrior1 = new Warrior("Rory Stewart", 100, Weapons.SWORD, Armour.STEELARMOUR);
-        nigel = new NigelFarage("Bob", 100, 10);
+        warrior1 = new Warrior("Rory Stewart", 100, dungeon,  Weapons.SWORD, Armour.STEELARMOUR);
+        nigel = new NigelFarage("Bob", 100, dungeon,10);
         nigel.attack(warrior1);
         assertEquals(95, warrior1.getHp());
     }

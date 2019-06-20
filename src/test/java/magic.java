@@ -1,3 +1,4 @@
+import Room.Dungeon;
 import creatures.NigelFarage;
 import creatures.Oger;
 import equipment.Armour;
@@ -21,15 +22,17 @@ public class magic {
     Oger oger;
     NigelFarage nigel;
     NigelFarage nigel2;
+    Dungeon dungeon;
 
 
     @Before
     public void before(){
-        warrior = new Warrior("Rory Stewart", 100, Weapons.SWORD, Armour.MEATSHEILD);
-        oger  = new Oger("Big nige", 30, 10);
-        nigel  = new NigelFarage("Big nige", 30, 10);
-        nigel2  = new NigelFarage("Big nige", 30, 40);
-        magic = new Magic("bob", 50, Spells.LIGHTNING, oger);
+        warrior = new Warrior("Rory Stewart",  100, dungeon, Weapons.SWORD, Armour.MEATSHEILD);
+        oger  = new Oger("Big nige", 30,dungeon, 10);
+        nigel  = new NigelFarage("Big nige", 30, dungeon,10);
+        nigel2  = new NigelFarage("Big nige", 30, dungeon,40);
+        magic = new Magic("bob", 50, dungeon, Spells.LIGHTNING, oger);
+        dungeon = new Dungeon("The evil dungeon", Treasure.APPLESHARES, nigel, magic);
     }
 
 
@@ -52,13 +55,13 @@ public class magic {
 
     @Test
     public void getValueOfSatchelAfterPickingUpStuff(){
-        magic.addTreasureToSatchel(Treasure.APPLESHARES);
+        magic.addTreasureToSatchel(dungeon);
         assertEquals(200,magic.getSatchel());
     }
 
     @Test
     public void getHealthAfterAttack(){
-        nigel = new NigelFarage("Bob", 100, 10);
+        nigel = new NigelFarage("Bob", 100, dungeon,10);
         nigel.attack(magic);
         assertEquals(50, magic.getHp());
         assertEquals(20, oger.getHp());

@@ -1,11 +1,12 @@
 package player;
 
+import Room.Room;
 import equipment.CookingIngredients;
 
 public class Cleric extends Player {
 
-    public Cleric(String name, int hp) {
-        super(name, hp);
+    public Cleric(String name, int hp, Room room) {
+        super(name, hp, room );
     }
 
     public void takeDamage(int damage){

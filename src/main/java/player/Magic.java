@@ -1,5 +1,6 @@
 package player;
 
+import Room.Room;
 import behaviour.IAttack;
 import creatures.Creature;
 import equipment.Spells;
@@ -11,8 +12,8 @@ public class Magic extends Player implements IAttack {
 
 
 
-    public Magic(String name, int hp, Spells spell, Creature creature) {
-        super(name, hp);
+    public Magic(String name, int hp, Room room, Spells spell, Creature creature) {
+        super(name, hp, room);
         this.spell = spell;
         this.creature = creature;
     }

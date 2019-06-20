@@ -1,3 +1,4 @@
+import Room.Dungeon;
 import creatures.NigelFarage;
 import equipment.Armour;
 import equipment.Weapons;
@@ -11,12 +12,11 @@ public class CreatureTest {
 
     NigelFarage nigel;
     Warrior warrior;
-
+    Dungeon dungeon;
 
     @Before
     public void before() {
-        nigel = new NigelFarage("Nigel", 50, 10 ){
-        };
+        nigel = new NigelFarage("Nigel", 50, dungeon, 10 );
     }
 
 
@@ -34,7 +34,7 @@ public class CreatureTest {
 
     @Test
     public void getHealthAfterAttack(){
-        warrior = new Warrior("Bob", 100, Weapons.AXE, Armour.STEELARMOUR);
+        warrior = new Warrior("Bob", 100, dungeon, Weapons.AXE, Armour.STEELARMOUR);
         warrior.attack(nigel);
         assertEquals(30, nigel.getHp());
     }

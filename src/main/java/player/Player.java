@@ -1,18 +1,20 @@
 package player;
 
+import Room.Room;
 import behaviour.ITakeDamage;
-import equipment.Treasure;
 
 public abstract class Player implements ITakeDamage {
 
     private String name;
     protected int hp;
     private int satchel;
+    private Room room;
 
-    public Player(String name, int hp) {
+    public Player(String name, int hp, Room room) {
         this.name = name;
         this.hp = hp;
         this.satchel = 0;
+        this.room = room;
     }
 
 
@@ -29,8 +31,9 @@ public abstract class Player implements ITakeDamage {
     }
 
 
-    public void addTreasureToSatchel(Treasure treasure){
-        this.satchel += treasure.getValue();
+    public void addTreasureToSatchel(Room room){
+        this.satchel += room.getTreasure().getValue();
+        room.setTreasureToEmpty();
     }
 
 
